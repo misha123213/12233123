@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App</title>
+</head>
+<body>
+    <h2>Выберите действие:</h2>
+    <button onclick="sendData('Пришел')">Пришел</button>
+    <button onclick="sendData('Ушел')">Ушел</button>
+    <button onclick="sendData('-15')">-15</button>
+    <button onclick="sendData('-обед')">-обед</button>
+    <button onclick="sendData('+')">+</button>
+
+    <script>
+        // Функция для отправки данных в Telegram
+        function sendData(action) {
+            if (window.Telegram.WebApp) {
+                Telegram.WebApp.sendData(action); // Отправляем выбранное действие
+            } else {
+                alert("Telegram WebApp не поддерживается в этом браузере.");
+            }
+        }
+
+        // Подготавливаем приложение при загрузке
+        if (window.Telegram.WebApp) {
+            Telegram.WebApp.ready();
+        }
+    </script>
+</body>
+</html>
